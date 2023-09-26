@@ -1,18 +1,38 @@
 import { EditorProvider } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
+import Collaboration from '@tiptap/extension-collaboration'
+import CollaborationCursor from '@tiptap/extension-collaboration-cursor'
+import * as Y from 'yjs'
+import { HocuspocusProvider } from '@hocuspocus/provider'
 import MenuBar from './MenuBar'
 import './editor.css'
 
+const ydoc = new Y.Doc(); // grab from db
+
+const provider = new HocuspocusProvider({
+  url: "ws://0.0.0.0:1234",
+  name: "example-document-room-id",
+  document: ydoc,
+});
+
 const extensions = [
   StarterKit.configure({
+    history: false,
     bulletList: {
       keepMarks: true,
-      keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
+      keepAttributes: false,
     },
     orderedList: {
       keepMarks: true,
-      keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
+      keepAttributes: false,
     },
+  }),
+  Collaboration.configure({
+    document: ydoc,
+  }),
+  CollaborationCursor.configure({
+    provider,
+    user: { name: "John Doe", color: "#ffcc00" },
   }),
 ]
 

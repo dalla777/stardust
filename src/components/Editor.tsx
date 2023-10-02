@@ -18,6 +18,7 @@ const websocketProvider = new HocuspocusProvider({
   url: "ws://127.0.0.1:80",
   name: "example-document-room-id",
   document: ydoc,
+  maxAttempts: 5,
 });
 
 const colors = ['#958DF1', '#F98181', '#FBBC88', '#FAF594', '#70CFF8', '#94FADB', '#B9F18D']
@@ -70,9 +71,12 @@ const Editor = () => {
     ]
   })
 
-    useEffect(() => {
+  useEffect(() => {
     // Update status changes
       websocketProvider.on('status', (event: HocuspocusProviderWebsocket) => {
+        setStatus(event.status)
+      })
+      websocketProvider.off('status', (event: HocuspocusProviderWebsocket) => {
         setStatus(event.status)
       })
   }, [])

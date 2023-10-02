@@ -1,7 +1,6 @@
-import { useCurrentEditor } from '@tiptap/react'
+import { Editor } from '@tiptap/react'
 
-const MenuBar = () => {
-    const { editor } = useCurrentEditor()
+const MenuBar = ({ editor }: { editor: Editor }) => {
   
     if (!editor) {
       return null

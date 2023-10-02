@@ -5,17 +5,24 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "serve": "node src/server/index.js",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "test": "vitest"
   },
   "dependencies": {
+    "@hocuspocus/provider": "^2.5.0",
+    "@hocuspocus/server": "^2.5.0",
+    "@tiptap/extension-character-count": "^2.1.11",
+    "@tiptap/extension-collaboration": "^2.1.11",
+    "@tiptap/extension-collaboration-cursor": "^2.1.11",
     "@tiptap/pm": "^2.1.10",
     "@tiptap/react": "^2.1.10",
     "@tiptap/starter-kit": "^2.1.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "yjs": "^13.6.8",
     "react-router-dom": "^6.16.0"
   },
   "devDependencies": {

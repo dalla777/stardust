@@ -17,8 +17,7 @@ const ydoc = new Y.Doc(); // grab from db
 const websocketProvider = new HocuspocusProvider({
   url: "ws://127.0.0.1:80",
   name: "example-document-room-id",
-  document: ydoc,
-  maxAttempts: 5,
+  document: ydoc
 });
 
 const colors = ['#958DF1', '#F98181', '#FBBC88', '#FAF594', '#70CFF8', '#94FADB', '#B9F18D']

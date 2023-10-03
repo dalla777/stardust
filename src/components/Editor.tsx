@@ -72,9 +72,11 @@ const Editor = () => {
 
   useEffect(() => {
     // Update status changes
-    const statusChange = (event: HocuspocusProviderWebsocket) => setStatus(event.status);
-    websocketProvider.on('status', statusChange);
-    websocketProvider.off('status', statusChange);
+    const statusChange = (event: HocuspocusProviderWebsocket) => setStatus(event.status)
+    websocketProvider.on('status', statusChange)
+    return () => {
+      websocketProvider.off('status', statusChange)
+    }
   }, [])
 
   useEffect(() => {
